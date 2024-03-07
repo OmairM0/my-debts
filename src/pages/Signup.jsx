@@ -29,15 +29,15 @@ const StyledNavLink = styled(NavLink)`
 `;
 
 function Signup() {
-  const navigate = useNavigate();
-  const { isLoading: isLoading2, isAuthenticated } = useUser();
+  // const navigate = useNavigate();
+  // const { isLoading: isLoading2, isAuthenticated } = useUser();
 
-  useEffect(
-    function () {
-      if (isAuthenticated && !isLoading2) navigate("/");
-    },
-    [isAuthenticated, isLoading2, navigate]
-  );
+  // useEffect(
+  //   function () {
+  //     if (isAuthenticated && !isLoading2) navigate("/");
+  //   },
+  //   [isAuthenticated, isLoading2, navigate]
+  // );
 
   return (
     <Container>

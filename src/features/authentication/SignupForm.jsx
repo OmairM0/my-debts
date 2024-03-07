@@ -6,8 +6,10 @@ import FormRow from "../../ui/FormRow";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import { useSignup } from "./useSignup";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CheckMail from "./CheckMail";
+import { useNavigate } from "react-router-dom";
+import { useUser } from "./useUser";
 
 function SignupForm() {
   const [showCheckMessage, setShowCheckMessage] = useState(false);
@@ -29,6 +31,17 @@ function SignupForm() {
       }
     );
   }
+
+  const navigate = useNavigate();
+  const { isLoading: isLoading2, isAuthenticated } = useUser();
+
+  useEffect(
+    function () {
+      if (isAuthenticated && !isLoading2 && showCheckMessage !== true)
+        navigate("/");
+    },
+    [isAuthenticated, isLoading2, navigate, showCheckMessage]
+  );
 
   return (
     <>
