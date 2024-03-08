@@ -33,14 +33,19 @@ function SignupForm() {
   }
 
   const navigate = useNavigate();
-  const { isLoading: isLoading2, isAuthenticated } = useUser();
+  const { isLoading: isLoading2, isAuthenticated, user } = useUser();
 
   useEffect(
     function () {
-      if (isAuthenticated && !isLoading2 && showCheckMessage !== true)
+      // console.log(showCheckMessage);
+      // console.log(!showCheckMessage);
+      console.log("auth", isAuthenticated);
+
+      if (isAuthenticated && !isLoading2 && user.confirmed_at) {
         navigate("/");
+      }
     },
-    [isAuthenticated, isLoading2, navigate, showCheckMessage]
+    [isAuthenticated, isLoading2, navigate, user]
   );
 
   return (
